@@ -1,0 +1,8 @@
+/* ใช้ทั้งเว็บไซต์ */
+body {
+  font-family: 'Athiti', sans-serif;
+}
+/* ใช้เฉพาะหัวข้อ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Athiti', sans-serif;
+}
