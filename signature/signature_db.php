@@ -30,14 +30,28 @@
           echo "Error".mysqli_error($dbh);
         }
       }  
-      $insert = "INSERT INTO signature1(signature_personnel,signature_name,signature_position,signature_img,dateadd,status) VALUE ('$code','$name','$position','$signatureFileName','$dateadd',1)";
-      $query = mysqli_query($dbh,$update) or die(mysql_error());
       */
-      $stmt = $dbh->prepare('UPDATE personnel SET Personnel_sign = :P2 WHERE Personnel_FL_name = :P1');
-      $stmt->bindParam(':P1', $fullname);
-      $stmt->bindParam(':P2', $signatureFileName);
-      $stmt->execute();	
-				header('Location:\tot\06.employer\index.php');
+      /*if($customer == ""){
+        $stmt = $dbh->prepare('UPDATE personnel SET Personnel_sign = :P2 WHERE Personnel_FL_name = :P1');
+        $stmt->bindParam(':P1', $fullname);
+        $stmt->bindParam(':P2', $signatureFileName);
+        $stmt->execute();	
+				  header('Location:\tot\06.employer\index.php');
+      }
+      else{
+
+      }*/
+      if($customer == ""){
+        $update = "UPDATE personnel SET Personnel_sign = '$signatureFileName' WHERE Personnel_FL_name = '$fullname'";
+        if(mysqli_query($dbh,$update))
+        {
+          echo "<script language='javascript' type='text/javascript'> alert('บันทึกลายเซ็นของคุณเรียบร้อยแล้ว'); window.history.go(-2); </script>";  
+          //echo '<meta http-equiv= "refresh" content="0; url=../06.employer/index.php"/>';	
+                
+        }else{
+          echo "Error".mysqli_error($dbh);
+        }
+      }
     endif;
 ?>
 
